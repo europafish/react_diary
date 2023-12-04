@@ -56,9 +56,10 @@ const App = () => {
       const diaryList = JSON.parse(localData).sort(
         (a, b) => parseInt(a) - parseInt(b)
       );
-
-      dataId.current = parseInt(diaryList[0].id) + 1;
-      dispatch({ type: "INIT", data: diaryList });
+      if (diaryList.length >= 1) {
+        dataId.current = parseInt(diaryList[0].id) + 1;
+        dispatch({ type: "INIT", data: diaryList });
+      }
     }
   }, []);
 
