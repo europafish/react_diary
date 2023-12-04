@@ -29,9 +29,9 @@ const Home = () => {
     }
   }, [diaryList, curDate]);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  // useEffect(() => {
+  //   //console.log(data);
+  // }, [data]);
   const headText = `${curDate.getFullYear()}년 ${curDate.getMonth() + 1}월`;
 
   const increaseMonth = () => {
@@ -51,7 +51,7 @@ const Home = () => {
         leftChild={<MyButton text={"<"} onClick={decreaseMonth} />}
         rightChild={<MyButton text={">"} onClick={increaseMonth} />}
       />
-      <DiaryList diaryList={diaryList} />
+      <DiaryList diaryList={data} />
     </div>
   );
 };

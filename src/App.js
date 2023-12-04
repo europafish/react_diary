@@ -1,4 +1,4 @@
-import React, { useRef, useReducer } from "react";
+import React, { useRef, useReducer, useEffect } from "react";
 
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -37,7 +37,7 @@ const reducer = (state, action) => {
     }
     case "EDIT": {
       newState = state.map((it) =>
-        it.id === action.targetId ? { ...action.data } : it
+        it.id === action.data.id ? { ...action.data } : it
       );
       break;
     }
@@ -49,8 +49,10 @@ const reducer = (state, action) => {
 };
 const App = () => {
   const [data, dispatch] = useReducer(reducer, dummyData);
-
   const dataId = useRef(0);
+
+  useEffect(() => {}, []);
+
   // CREATE
   const onCreate = (date, content, emotion) => {
     dispatch({
@@ -90,7 +92,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/new" element={<New />} />
-              <Route path="/edit" element={<Edit />} />
+              <Route path="/edit/:id" element={<Edit />} />
               <Route path="/diary/:id" element={<Diary />} />
             </Routes>
           </div>
