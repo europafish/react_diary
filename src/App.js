@@ -9,6 +9,7 @@ import Diary from "./pages/Diary.js";
 
 export const DiaryStateContext = React.createContext(null);
 export const DiaryDispatchContext = React.createContext(null);
+
 const dummyData = [
   { id: 1, emotion: 1, content: "오늘의일기 1번", date: 1701327309982 },
   { id: 2, emotion: 2, content: "오늘의일기 2번", date: 1701327309983 },
@@ -83,7 +84,7 @@ const App = () => {
   // EDIT
   return (
     <DiaryStateContext.Provider value={data}>
-      <DiaryDispatchContext.Provider value={(onCreate, onRemove, onEdit)}>
+      <DiaryDispatchContext.Provider value={{ onCreate, onRemove, onEdit }}>
         <BrowserRouter>
           <div className="App">
             <Routes>
